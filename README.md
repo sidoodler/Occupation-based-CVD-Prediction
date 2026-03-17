@@ -1,21 +1,73 @@
-# Occupation-based-CVD-Prediction
-This project analyses health survey data from 2015-21 to assess the correlation between a person’s occupation and their cardiovascular health status. It also performs predictive modelling for the risk of cardiovascular diseases. The following models are tried: Logistic regression, Random Forest, Support vector Machine, Neural Network.
+# Occupational Correlation & Predictive Modeling for Cardiovascular Disease (2015-2021)
+## Project Overview
+This project investigates the longitudinal relationship between occupational categories and cardiovascular health status using health survey data spanning six years. Beyond exploratory analysis, the repository implements a predictive pipeline to assess CVD risk using various machine learning architectures, including traditional statistical models and neural networks.
 
-Language used - Python
+A key challenge addressed in this project is class imbalance, handled through synthetic data generation using Generative Adversarial Networks (GANs) and Gaussian Copula methods.
 
-Libraries required to run the notebooks:
-numpy, pandas, sklearn, seaborn, matplotlib, sdv, keras
+**Technical Stack**
 
-Code files:
-1. Occupation_CVD_analysis.ipynb - Required data files are 2015.csv, 2016.csv, 2017.csv, 2018.csv, 2020.csv, 2021.csv. This notebook contains a detailed analysis between occupation and CVD attributes across 6 years of data among various work categories, occupations and industries.
+Language: Python
 
-2. Main.ipynb - Required data files are adult20.csv, adult21.csv. In this notebook, we combined the 2020 and 2021 dataset and did all preprocessing needed for data modelling. Also, extracted the top 25 features as a new dataset for modelling.
+Data Manipulation: pandas, numpy
 
-3. GANs.ipynb - Required data files are finalpreprocessed_detailed.csv. Synthesised new data with CVD = 1 distribution using Gaussian Coupla method and Gaussian method using sdv library.
+Machine Learning: scikit-learn, Keras (Neural Networks), sdv (Synthetic Data Vault)
 
-4. Experimented with SVM, logistic regression, neural networks and random forest models on all datasets in all of these notebooks - DataModelling_Full_Detailed.ipynb, DataModelling_Full_Detailed2.ipynb, DataModelling_Synthetic_Data.ipynb, DataModelling_data25.ipynb. 
-Required data files are finalpreprocessed_detailed.csv, synthetic_dataGAN.csv, synthetic_dataGC.csv, data25_detailed.csv. 
+Visualization: seaborn, matplotlib
 
-Data files attached:
-finalpreprocessed_detailed.csv, synthetic_dataGAN.csv, synthetic_dataGC.csv, data25_detailed.csv, 2015.csv, 2016.csv, 2017.csv, 2018.csv, 2020.csv, 2021.csv, adult20.csv, adult21.csv.
-Unzip other_data.zip and other_data_2.zip to access these data files.
+## Project Architecture
+**1. Exploratory Data Analysis (EDA)**
+
+File: Occupation_CVD_analysis.ipynb
+
+Analyzes 6 years of historical data (2015–2021).
+
+Maps correlations between specific industries/work categories and cardiovascular attributes.
+
+Identifies trends in health outcomes across different occupational sectors.
+
+**2. Data Preprocessing & Feature Engineering**
+
+File: Main.ipynb
+
+Merges 2020 and 2021 datasets for a robust contemporary baseline.
+
+Implements data cleaning, normalization, and encoding.
+
+Feature Selection: Utilizes statistical methods to extract the Top 25 features to optimize model performance and reduce dimensionality.
+
+**3. Handling Data Imbalance (GANs)**
+
+File: GANs.ipynb
+
+Addresses the scarcity of CVD-positive cases in the raw data.
+
+Methodology: Employs Gaussian Copula and GAN-based synthesis via the sdv library to generate high-fidelity synthetic samples, ensuring a balanced distribution for training.
+
+**4. Predictive Modeling & Evaluation**
+
+Files: DataModelling_Full_Detailed.ipynb, DataModelling_Synthetic_Data.ipynb, etc.
+Comprehensive benchmarking of four core architectures:
+
+Logistic Regression: Baseline statistical modeling.
+
+Random Forest: Ensemble learning for feature importance.
+
+Support Vector Machines (SVM): High-dimensional classification.
+
+Neural Networks: Deep learning approach for non-linear pattern recognition.
+
+## Data Setup
+
+The datasets required for these notebooks are provided in compressed format.
+
+Unzip other_data.zip and other_data_2.zip.
+
+Ensure the .csv files are placed in the root directory or update the file paths within the notebooks.
+
+Primary Data Sources:
+
+2015.csv through 2021.csv (Yearly survey data)
+
+adult20.csv / adult21.csv (Detailed 2020-21 datasets)
+
+synthetic_dataGAN.csv / synthetic_dataGC.csv (Model-generated data)
